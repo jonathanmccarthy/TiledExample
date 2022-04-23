@@ -77,7 +77,7 @@ namespace TiledExample
             {
                 int firstGid = _tiledMap.GetTilesetFirstGlobalIdentifier(tileSet);
 
-                if ((id >= firstGid) && (id <= firstGid + tileSet.TileCount))
+                if ((id >= firstGid) && (id < firstGid + tileSet.TileCount))
                     return $"{tileSet.Name}: {id - firstGid}";
             }
 

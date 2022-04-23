@@ -65,7 +65,7 @@ namespace TiledExample
                 int tileX, tileY;
                 GetTileXYAtPoint(x, y, out tileX, out tileY);
                 var tile = _tiledMap.TileLayers[0].GetTile((ushort)tileX, (ushort)tileY);
-                _tileText = $"{tileX}, {tileY} TileType: [{tile.GlobalIdentifier}]";
+                _tileText = $"{tileX}, {tileY} TileType: [{tile.GlobalIdentifier - 1}]";
             }
         }
 

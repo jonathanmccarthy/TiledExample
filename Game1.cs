@@ -75,7 +75,7 @@ namespace TiledExample
         {
             foreach (var tileSet in map.Tilesets)
             {
-                int firstGid = _tiledMap.GetTilesetFirstGlobalIdentifier(tileSet);
+                int firstGid = map.GetTilesetFirstGlobalIdentifier(tileSet);
 
                 if ((id >= firstGid) && (id < firstGid + tileSet.TileCount))
                     return $"{tileSet.Name}: {id - firstGid}";

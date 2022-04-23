@@ -65,8 +65,23 @@ namespace TiledExample
                 int tileX, tileY;
                 GetTileXYAtPoint(x, y, out tileX, out tileY);
                 var tile = _tiledMap.TileLayers[0].GetTile((ushort)tileX, (ushort)tileY);
-                _tileText = $"{tileX}, {tileY} TileType: [{tile.GlobalIdentifier - 1}]";
+
+                _tileText = $"{tileX}, {tileY} TileType: [{GetTileText(_tiledMap, tile.GlobalIdentifier)}]";
+
             }
+        }
+
+        private string GetTileText(TiledMap map, int id)
+        {
+            foreach (var tileSet in map.Tilesets)
+            {
+                int firstGid = _tiledMap.GetTilesetFirstGlobalIdentifier(tileSet);
+
+                if ((id >= firstGid) && (id <= firstGid + tileSet.TileCount))
+                    return $"{tileSet.Name}: {id - firstGid}";
+            }
+
+            return "Unknown";            
         }
 
         public bool ContainsXY(int x, int y)
